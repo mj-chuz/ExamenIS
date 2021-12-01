@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#FD8721">
+        <div class="container-fluid">
+            <a class="navbar-brand inicio-imagen" href="/Home/Index">
+                <img src="~/Imagenes/horno.png" width="80" height="70" style="margin-left:50px;"/>
+
+            </a>
+            <a class="navbar-brand inicio" href="/Home/Index" style="font-size:2rem; font-family:'Segoe Print'">
+                Pizzeria Nabi
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="navbar-brand" href="#">Crea tu pizza</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navbar-brand opciones" href="#">Menú</a>
+                    </li>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+</body>
+</html>
