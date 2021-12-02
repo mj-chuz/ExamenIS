@@ -27,3 +27,39 @@
     font-family: 'Segoe Print'; 
     font-size:1.7rem
 }
+
+.cards-menu {
+    align-content: center;
+    text-align: center;
+    margin-left: 150px;
+    margin-top: 40px;
+}
+
+.cards-menu-derecho {
+    align-content: center;
+    text-align: center;
+    margin-left: 100px;
+    margin-top: 40px;
+}
+
+.titulos-princpal{
+    margin-left:50px;
+    margin-top:30px;
+}
+
+.card-inicio:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.btn-principal {
+    background-color: #FD8721;
+    font-weight: bold;
+    border: 2px solid orangered;
+    color: white;
+}
+
+.btn-principal:hover {
+    background-color: orangered;
+    color: white;
+}
