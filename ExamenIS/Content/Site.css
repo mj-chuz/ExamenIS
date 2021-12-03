@@ -63,3 +63,21 @@
     background-color: orangered;
     color: white;
 }
+
+.form-control {
+    background-color: #FFEBD8;
+}
+
+.pregunta-derecha{
+    margin-right:100px;
+    margin-left:100px;
+}
+
+.pregunta-izquierda {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.form-check-label {
+    font-size: 3rem;
+}
