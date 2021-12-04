@@ -14,163 +14,164 @@
 }
 
 <body>
-    <div class="container">
-        @if (ViewBag.Message != null)
+    @if (ViewBag.Message != null)
+    {
+        if (ViewBag.ExitoAlCrear)
         {
-            if (ViewBag.ExitoAlCrear)
-            {
-                <div class="alert-success">
-                    <h3> @ViewBag.Message </h3>
-                </div>
-            }
-            else
-            {
-                <div class="alert-danger">
-                    <h3> @ViewBag.Message</h3>
-                </div>
-            }
+            <div class="alert-success">
+                <h3> @ViewBag.Message </h3>
+            </div>
         }
-
-
+        else
+        {
+            <div class="alert-danger">
+                <h3> @ViewBag.Message</h3>
+            </div>
+        }
+    }
+    <div class="container">
         @using (Html.BeginForm("CrearPizza", "Pizza", FormMethod.Post,
         new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <h1>¡Crea tu propia pizza!</h1>
-        <div class="row">
-            <div class="col">
-                <div class="form-group pregunta-izquierda">
-                    @Html.LabelFor(model => model.Tamano)
-                    @Html.DropDownListFor(model => model.Tamano, tiposTamano, "-Sin selección-", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Tamano, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h1>¡Crea tu propia pizza!</h1>
+            <h8>* Son campos obligatorios</h8>
+            <hr/>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group pregunta-izquierda">
+                        @Html.LabelFor(model => model.Tamano)
+                        @Html.DropDownListFor(model => model.Tamano, tiposTamano, "---", new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.Tamano, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group pregunta-izquierda">
+                        @Html.LabelFor(model => model.TipoMasa)
+                        @Html.DropDownListFor(model => model.TipoMasa, tiposMasa, "---", new { @class = "form-select" })
+                        @Html.ValidationMessageFor(model => model.TipoMasa, "", new { @class = "text-danger" })
+                    </div>
+
                 </div>
-                <div class="form-group pregunta-izquierda">
-                    @Html.LabelFor(model => model.TipoMasa)
-                    @Html.DropDownListFor(model => model.TipoMasa, tiposMasa, "-Sin selección-", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.TipoMasa, "", new { @class = "text-danger" })
+                <div class="col">
+                    <div class="form-group pregunta-derecha">
+                        @Html.LabelFor(model => model.TipoSalsa)
+                        @Html.DropDownListFor(model => model.TipoSalsa, tiposSalsa, "---", new { @class = "form-select " })
+                        @Html.ValidationMessageFor(model => model.TipoSalsa, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group pregunta-derecha">
+                        @Html.LabelFor(model => model.CantidadQueso)
+                        @Html.DropDownListFor(model => model.CantidadQueso, cantidadQueso, "---", new { @class = "form-select " })
+                        @Html.ValidationMessageFor(model => model.CantidadQueso, "", new { @class = "text-danger" })
+                    </div>
                 </div>
 
-            </div>
-            <div class="col">
-                <div class="form-group pregunta-derecha">
-                    @Html.LabelFor(model => model.TipoSalsa)
-                    @Html.DropDownListFor(model => model.TipoSalsa, tiposSalsa, "-Sin selección-", new { @class = "form-control " })
-                    @Html.ValidationMessageFor(model => model.TipoSalsa, "", new { @class = "text-danger" })
+                <div class="form-group" hidden>
+                    @Html.LabelFor(model => model.Nombre)
+                    @Html.TextBoxFor(model => model.Nombre, new { @Value = "Pizza personalizada" })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                 </div>
-                <div class="form-group pregunta-derecha">
-                    @Html.LabelFor(model => model.CantidadQueso)
-                    @Html.DropDownListFor(model => model.CantidadQueso, cantidadQueso, "-Sin selección-", new { @class = "form-control " })
-                    @Html.ValidationMessageFor(model => model.CantidadQueso, "", new { @class = "text-danger" })
+
+                <div class="form-group" hidden>
+                    @Html.LabelFor(model => model.Disponibilidad)
+                    @Html.TextBoxFor(model => model.Disponibilidad, new { @Value = 10 })
+                    @Html.ValidationMessageFor(model => model.Disponibilidad, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group" hidden>
+                    @Html.LabelFor(model => model.Precio)
+                    @Html.TextBoxFor(model => model.Precio, new { @Value = 50000 })
+                    @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-            <div class="form-group" hidden>
-                @Html.LabelFor(model => model.Nombre)
-                @Html.TextBoxFor(model => model.Nombre, new { @Value = "Pizza personalizada" })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            
+            <div class="ingredientes">
+                <h2>Elije los ingredientes</h2>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ingrediente1" value="jamon">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Jamón
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ingrediente2" value="pepperoni">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Pepperoni
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ingrediente3" value="carneMolida">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Carne molida
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ingrediente4" value="jalapeno">
+                            <label class="form-check-label ingredientes-checkbox" for="flexCheckDefault">
+                                Jalapeño
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ingrediente5" value="pina">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Piña
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ingrediente6" value="tomate">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Tomate fresco
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ingrediente7" value="cebolla">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Cebolla
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ingrediente8" value="hongos">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Hongos
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="ingrediente9" value="aceitunas">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Aceitunas negras
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <input type="submit" class="btn btn-principal btn-lg" style="float: right; margin-right: 200px; margin-top:30px;" value="Guardar" />
 
-            <div class="form-group" hidden>
-                @Html.LabelFor(model => model.Disponibilidad)
-                @Html.TextBoxFor(model => model.Disponibilidad, new { @Value = 10 })
-                @Html.ValidationMessageFor(model => model.Disponibilidad, "", new { @class = "text-danger" })
-            </div>
+            <img src="~/Imagenes/crearPizza.png" width="500" height="333" style="margin-left: 180px; margin-top: 30px; margin-bottom: 30px;">
 
-            <div class="form-group" hidden>
-                @Html.LabelFor(model => model.Precio)
-                @Html.TextBoxFor(model => model.Precio, new { @Value = 50000 })
-                @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
-            </div>
         </div>
-        <div class="ingredientes">
-            <h2>Elije los ingredientes</h2>
-            <div class="row">
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="ingrediente1" value="jamon">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Jamón
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="ingrediente2" value="pepperoni">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Pepperoni
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="ingrediente3" value="carneMolida">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Carne molida
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="ingrediente4" value="jalapeno">
-                        <label class="form-check-label ingredientes-checkbox" for="flexCheckDefault">
-                            Jalapeño
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="ingrediente5" value="pina">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Piña
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="ingrediente6" value="tomate">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Tomate fresco
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="ingrediente7" value="cebolla">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Cebolla
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="ingrediente8" value="hongos">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Hongos
-                        </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="ingrediente9" value="aceitunas">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Aceitunas negras
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <input type="submit" class="btn btn-principal" style="float: right; margin-right: 100px; margin-top:30px;" value="Guardar" />
-
-        <img src="~/Imagenes/crearPizza.png" width="500" height="333" style="margin-left: 100px; margin-top: 30px; margin-bottom: 30px;">
-
+        }
     </div>
-    }
-</div>
 
 </body>
 

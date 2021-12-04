@@ -64,8 +64,9 @@
     color: white;
 }
 
-.form-control {
+.form-select{
     background-color: #FFEBD8;
+    font-weight:bold;
 }
 
 .pregunta-derecha{
@@ -79,13 +80,14 @@
 }
 
 .form-check-label {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-left:10px;
+    margin-bottom:
 }
 
 input[type=checkbox] {
     transform: scale(1.5);
-    
+    margin-top:10px;
 }
 
 
@@ -96,4 +98,21 @@ input[type="checkbox"]:checked{
 
 .form-check{
     margin-left:110px;
+    margin-bottom:30px;
+}
+
+.form-group{
+    font-size:1.5rem;
+    margin-top:30px;
+}
+
+.form-horizontal h1 {
+    margin-top: 30px;
+    font-family: 'Segoe Print';
+}
+
+.form-horizontal h2 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-family: 'Segoe Print';
 }
