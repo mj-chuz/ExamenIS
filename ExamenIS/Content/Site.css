@@ -116,3 +116,16 @@ input[type="checkbox"]:checked{
     margin-bottom: 40px;
     font-family: 'Segoe Print';
 }
+
+.orden{
+    margin-top:75px;
+    text-align:center;
+    align-content:center;
+    
+        
+}
+
+.contenedor-menu {
+    margin-top: 30px;
+    font-family: 'Segoe Print';
+}

@@ -4,7 +4,7 @@
 }
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid contenedor-menu">
         <div class="row">
             <div class="col-9">
                 <h1>Menú</h1>
@@ -13,17 +13,31 @@
                 {
                     <div class="card">
                         <div class="card-body">
-                            <h1>@ViewBag.articulos[numeroArticulos].Nombre</h1>
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/Imagenes/@ViewBag.articulos[numeroArticulos].NombreImagen" width="400" height="250">
+                                </div>
+                                <div class="col">
+                                    <h1>@ViewBag.articulos[numeroArticulos].Nombre</h1>
+                                    <h3>Precio: ₡@ViewBag.articulos[numeroArticulos].Precio</h3>
+                                    <br />
+                                    <h5>@ViewBag.articulos[numeroArticulos].Descripcion</h5>
+                                    <br />
+                                    <button type="button" class="btn btn-principal btn-lg">Agregar a la orden</button>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 }
-
+                <a style="float:left; margin-top:15px" href="#top">Volver arriba</a>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card orden">
                     <div class="card-body">
                         <h3>Mis Productos</h3>
+                        <button type="button" class="btn btn-principal btn-lg">Pagar</button>
                     </div>
                 </div>
 
