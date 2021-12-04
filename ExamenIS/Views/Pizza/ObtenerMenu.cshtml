@@ -23,7 +23,7 @@
                                     <br />
                                     <h5>@ViewBag.articulos[numeroArticulos].Descripcion</h5>
                                     <br />
-                                    <button type="button" class="btn btn-principal btn-lg">Agregar a la orden</button>
+                                    <button type="button" class="btn btn-principal btn-lg" onclick="agregarArticulo('@ViewBag.articulos[numeroArticulos].Nombre', '@ViewBag.articulos[numeroArticulos].Precio')">Agregar a la orden</button>
 
                                 </div>
                             </div>
@@ -37,7 +37,12 @@
                 <div class="card orden">
                     <div class="card-body">
                         <h3>Mis Productos</h3>
+                        <ul id="listaArticulos">
+                        </ul>
+                        <hr/>
+                        <h2 id="total-pagar"></h2>
                         <button type="button" class="btn btn-principal btn-lg">Pagar</button>
+
                     </div>
                 </div>
 
@@ -46,3 +51,4 @@
     </div>
 </body>
 
+<script type="text/javascript" src="~/Scripts/AgregarProductos.js"></script>

@@ -121,11 +121,20 @@ input[type="checkbox"]:checked{
     margin-top:75px;
     text-align:center;
     align-content:center;
-    
-        
+      
+}
+
+.orden h3{
+    font-weight:bold;
 }
 
 .contenedor-menu {
     margin-top: 30px;
     font-family: 'Segoe Print';
+    font-size: 1.5rem;
+}
+
+#listaArticulos {
+    list-style-type: none;
+    margin-top:30px;
 }
