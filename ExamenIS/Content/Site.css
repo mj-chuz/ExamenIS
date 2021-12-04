@@ -63,3 +63,56 @@
     background-color: orangered;
     color: white;
 }
+
+.form-select{
+    background-color: #FFEBD8;
+    font-weight:bold;
+}
+
+.pregunta-derecha{
+    margin-right:100px;
+    margin-left:100px;
+}
+
+.pregunta-izquierda {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.form-check-label {
+    font-size: 1.5rem;
+    margin-left:10px;
+    margin-bottom:
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    margin-top:10px;
+}
+
+
+input[type="checkbox"]:checked{
+    border-color: orangered;
+    background-color: #FD8721;
+}
+
+.form-check{
+    margin-left:110px;
+    margin-bottom:30px;
+}
+
+.form-group{
+    font-size:1.5rem;
+    margin-top:30px;
+}
+
+.form-horizontal h1 {
+    margin-top: 30px;
+    font-family: 'Segoe Print';
+}
+
+.form-horizontal h2 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-family: 'Segoe Print';
+}

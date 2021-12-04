@@ -121,9 +121,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PizzaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\PizzaHandler.cs" />
+    <Compile Include="Models\ArticulosModel.cs" />
+    <Compile Include="Models\BebidaModel.cs" />
+    <Compile Include="Models\PizzaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +154,7 @@
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Imagenes\combo2.jpg" />
+    <Content Include="Imagenes\crearPizza.png" />
     <Content Include="Imagenes\horno.png" />
     <Content Include="Imagenes\ImagenPrincipal.png" />
     <Content Include="Imagenes\pizza1.jpg" />
@@ -180,10 +186,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Pizza\CrearPizza.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
