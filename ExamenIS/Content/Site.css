@@ -79,5 +79,21 @@
 }
 
 .form-check-label {
-    font-size: 3rem;
+    font-size: 1.3rem;
+    margin-left:10px;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    
+}
+
+
+input[type="checkbox"]:checked{
+    border-color: orangered;
+    background-color: #FD8721;
+}
+
+.form-check{
+    margin-left:110px;
 }

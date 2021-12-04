@@ -125,7 +125,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Handlers\PizzaBuilder.cs" />
     <Compile Include="Handlers\PizzaHandler.cs" />
     <Compile Include="Models\ArticulosModel.cs" />
     <Compile Include="Models\BebidaModel.cs" />
@@ -153,9 +152,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Compile Include="Models\Pizza.cs" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Imagenes\combo2.jpg" />
+    <Content Include="Imagenes\crearPizza.png" />
     <Content Include="Imagenes\horno.png" />
     <Content Include="Imagenes\ImagenPrincipal.png" />
     <Content Include="Imagenes\pizza1.jpg" />
