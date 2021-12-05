@@ -87,9 +87,15 @@ namespace ExamenIS.Controllers
     }
 
 
-    public ActionResult VentanaPago(String productos, bool necesitaEnvio = false)
+    public ActionResult VentanaPago(String productos, bool necesitaEnvio = false, int precioTotal = 0)
     {
-      UsuarioModel us = (UsuarioModel)TempData["orden"];
+      if (necesitaEnvio) {
+        UsuarioModel us = (UsuarioModel)TempData["orden"];
+        us.PagoTotal = (int)(us.PagoTotal * 1.13);
+        ViewBag.Usuario = us;
+        TempData["orden"] = us;
+      }
+     
       List<String> productosOrdenados = new List<String>();
       String[] listaIngredientes = productos.Split(new[] { "," }, StringSplitOptions.None);
       foreach (String articulo in listaIngredientes)
@@ -100,26 +106,50 @@ namespace ExamenIS.Controllers
         }
 
       }
-      us.PagoTotal = (int)(us.PagoTotal * 1.13);
+      ViewBag.Total = precioTotal * 1.13;
+
       ViewBag.Productos = productosOrdenados;
-      ViewBag.Usuario = us;
+      
       ViewBag.Envio = necesitaEnvio;
-      TempData["orden"] = us;
+      
       return View();
     }
 
     [HttpPost]
     public ActionResult VentanaPago()
     {
-      UsuarioModel us = (UsuarioModel)TempData["orden"];
-      TempData["orden"] = us;
-      return RedirectToAction("ComprobantePago", "Pizza");
+      String nombreOrden = "";
+      string a = "";
+      String necesitaEnvio = Request.Form["necesitaEnvio"];
+      nombreOrden = Request.Form["nombreTarjeta"];
+      a = Request.Form["pagoTotal"];
+      bool envio = Convert.ToBoolean(necesitaEnvio);
+      if (envio)
+      {
+        UsuarioModel us = (UsuarioModel)TempData["orden"];
+        TempData["orden"] = us;
+        
+      }else
+      {
+        nombreOrden = Request.Form["nombreTarjeta"];
+        a = Request.Form["pagoTotal"];
+      }
+      return RedirectToAction("ComprobantePago", "Pizza", new { necesitaEnvio = envio, nombreOrden = nombreOrden, pagoTotal = Convert.ToInt32(a) });
     }
 
-    public ActionResult ComprobantePago()
+    public ActionResult ComprobantePago(bool necesitaEnvio, String nombreOrden = "", int pagoTotal = 0)
     {
-      UsuarioModel us = (UsuarioModel)TempData["orden"];
-      ViewBag.Usuario = us;
+      ViewBag.Envio = necesitaEnvio;
+      if (necesitaEnvio) {
+        UsuarioModel us = (UsuarioModel)TempData["orden"];
+        ViewBag.Usuario = us;
+      }
+      else
+      {
+        ViewBag.Nombre = nombreOrden;
+        ViewBag.Pago = pagoTotal;
+      }
+     
       return View();
     }
 
