@@ -1,5 +1,5 @@
 ﻿var precioTotal = 0;
-var productosComprados = [];
+var productosComprados = "";
 var contador = 0;
 function agregarArticulo(nombre, precio) {
     var nuevoProducto = document.createElement("li");
@@ -34,8 +34,16 @@ function calcularTotal(precio) {
 }
 
 function obtenerArticulos(nombre) {
-    productosComprados.push(nombre);
+    productosComprados = nombre + "," + productosComprados;
     console.log(productosComprados);
     return productosComprados;
 }
 
+function articulos() {
+    return productosComprados;
+}
+
+function obtenerProductos() {
+    document.getElementById("productosComprador").value = productosComprados;
+    console.log(document.getElementById("productosComprador").value);
+}

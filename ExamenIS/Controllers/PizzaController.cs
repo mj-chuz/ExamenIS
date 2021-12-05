@@ -61,8 +61,22 @@ namespace ExamenIS.Controllers
       return View();
     }
 
-    public ActionResult PedirServicioDomicilio(List<String> pizzas = null)
+    [HttpGet]
+    public ActionResult ElegirServicio(String a)
     {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Recibir()
+    {
+      String a = Request.Form["productosComprador"];
+      return RedirectToAction("ElegirServicio", "Pizza", new {a = a});    
+    }
+
+    public ActionResult PedirServicioDomicilio()
+    {
+      String a = Request.Form["productosComprador"];
       return View();
     }
 

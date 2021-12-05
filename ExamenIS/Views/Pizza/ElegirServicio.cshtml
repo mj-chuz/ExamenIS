@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "ElegirServicio";
+}
+
+<body>
+    <div class="container-fluid">
+        <div class="row fila-imagenes">
+            <div class="col-lg-4">
+                <div class="card card-inicio text-center border-light mb-3 shadow p-3 mb-5 bg-white rounded" style="max-width: 35rem; border-radius: 15px">
+                    <div class="card-body">
+                        <img src="~/Imagenes/delivery-man.png" width="300" height="300">
+                        <a class="btn btn-servicio btn-lg" onclick="location.href='@Url.Action("PedirServicioDomicilio", "Pizza")'">Entrega a domicilio</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card card-inicio text-center border-light mb-3 shadow p-3 mb-5 bg-white rounded" style="max-width: 35rem; border-radius: 15px">
+                    <div class="card-body">
+                        <img src="~/Imagenes/pizza-shop.png" width="300" height="300">
+                        <button class="btn btn-servicio btn-lg">Recoger en restaurante</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

@@ -200,6 +200,7 @@
     <Content Include="Views\Pizza\CrearPizza.cshtml" />
     <Content Include="Views\Pizza\ObtenerMenu.cshtml" />
     <Content Include="Views\Pizza\PedirServicioDomicilio.cshtml" />
+    <Content Include="Views\Pizza\ElegirServicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
