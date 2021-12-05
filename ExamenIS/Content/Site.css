@@ -116,3 +116,43 @@ input[type="checkbox"]:checked{
     margin-bottom: 40px;
     font-family: 'Segoe Print';
 }
+
+.orden{
+    margin-top:75px;
+    text-align:center;
+    align-content:center;
+      
+}
+
+.orden h3{
+    font-weight:bold;
+}
+
+.contenedor-menu {
+    margin-top: 30px;
+    font-family: 'Segoe Print';
+    font-size: 1.5rem;
+}
+
+#listaArticulos {
+    list-style-type: none;
+    margin-top:30px;
+}
+
+.modal-title{
+    font-size:2.5rem;
+    text-align:center;
+    font-weight:bold;
+    align-content:center;
+    margin-bottom:30px;
+}
+
+.modal-body {
+    background-color: #FFD7BA;
+}
+
+.btn-servicio {
+    background-color: #FFEBD8;
+    color: black;
+    font-weight: bold;
+}

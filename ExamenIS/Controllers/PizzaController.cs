@@ -53,5 +53,12 @@ namespace ExamenIS.Controllers
         return View(); //si falla se regresa a la vista original pero sin el mensaje
       }
     }
+
+    public ActionResult ObtenerMenu()
+    {
+      PizzaHandler accesoArticulos = new PizzaHandler();
+      ViewBag.articulos = accesoArticulos.ObtenerArticulos();
+      return View();
+    }
   }
 }

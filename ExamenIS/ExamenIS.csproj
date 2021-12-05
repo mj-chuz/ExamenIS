@@ -127,7 +127,6 @@
     </Compile>
     <Compile Include="Handlers\PizzaHandler.cs" />
     <Compile Include="Models\ArticulosModel.cs" />
-    <Compile Include="Models\BebidaModel.cs" />
     <Compile Include="Models\PizzaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -153,13 +152,24 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Imagenes\ajo.jpg" />
+    <Content Include="Imagenes\combo1.jpg" />
     <Content Include="Imagenes\combo2.jpg" />
     <Content Include="Imagenes\crearPizza.png" />
+    <Content Include="Imagenes\delivery-man.png" />
     <Content Include="Imagenes\horno.png" />
     <Content Include="Imagenes\ImagenPrincipal.png" />
+    <Content Include="Imagenes\pizza-shop.png" />
     <Content Include="Imagenes\pizza1.jpg" />
     <Content Include="Imagenes\pizza2.jpg" />
     <Content Include="Imagenes\pizzaCombo1.jpg" />
+    <Content Include="Imagenes\pizzaHawaiana1.jpg" />
+    <Content Include="Imagenes\pizzaHawaiana2.jpg" />
+    <Content Include="Imagenes\pizzaMargarita.jpg" />
+    <Content Include="Imagenes\pizzaPepperoni.jpg" />
+    <Content Include="Imagenes\queso.jpg" />
+    <Content Include="Imagenes\tomate.jpg" />
+    <Content Include="Scripts\AgregarProductos.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -187,6 +197,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pizza\CrearPizza.cshtml" />
+    <Content Include="Views\Pizza\ObtenerMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

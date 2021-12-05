@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "ObtenerMenu";
+}
+
+<body>
+    <div class="container-fluid contenedor-menu">
+        <div class="row">
+            <div class="col-8">
+                <h1>Menú</h1>
+                <hr />
+                @for (int numeroArticulos = 0; numeroArticulos < @ViewBag.articulos.Count; numeroArticulos++)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/Imagenes/@ViewBag.articulos[numeroArticulos].NombreImagen" width="400" height="250">
+                                </div>
+                                <div class="col">
+                                    <h1>@ViewBag.articulos[numeroArticulos].Nombre</h1>
+                                    <h3>Precio: ₡@ViewBag.articulos[numeroArticulos].Precio</h3>
+                                    <br />
+                                    <h5>@ViewBag.articulos[numeroArticulos].Descripcion</h5>
+                                    <br />
+                                    <button type="button" class="btn btn-principal btn-lg" onclick="agregarArticulo('@ViewBag.articulos[numeroArticulos].Nombre', '@ViewBag.articulos[numeroArticulos].Precio')">Agregar a la orden</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                <a style="float:left; margin-top:15px" href="#top">Volver arriba</a>
+            </div>
+            <div class="col">
+                <div class="card orden">
+                    <div class="card-body">
+                        <h3>Mis Productos</h3>
+                        <hr />
+
+
+
+                        <ul id="listaArticulos">
+                        </ul>
+                        <hr />
+                        <h2 id="total-pagar"></h2>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-principal btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Pagar
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog-centered  modal-lg">
+                                <div class="modal-content">
+                                   
+                                        
+                                    
+                                    <div class="modal-body">
+                                        <h5 class="modal-title">¿Cómo prefiere su orden?</h5>
+                                       
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <img src="~/Imagenes/delivery-man.png" width="300" height="300">
+                                                        <button class="btn btn-servicio btn-lg">Entrega a domicilio</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <img src="~/Imagenes/pizza-shop.png" width="300" height="300">
+                                                        <button class="btn btn-servicio btn-lg">Recoger en restaurante</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="~/Scripts/AgregarProductos.js"></script>
