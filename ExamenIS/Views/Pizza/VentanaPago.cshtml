@@ -4,8 +4,9 @@
         <h1 style="margin-top:35px">Ventana de pago</h1>
         <hr />
         <div class="row">
-            <div class="col" style="margin-right:100px">
-               
+            <div class="col" style="margin-right:50px">
+                @if (ViewBag.Envio == true)
+                {
                     <h2>Direccion de entrega</h2>
                     <div class="card rounded-3">
                         <div class="card-body">
@@ -13,7 +14,7 @@
                             <h4>@ViewBag.Usuario.Direccion</h4>
                         </div>
                     </div>
-              
+
 
                     <h2 style="margin-top:30px;">Nombre al que está la orden</h2>
                     <div class="card rounded-3">
@@ -23,6 +24,18 @@
                         </div>
                     </div>
 
+
+                }
+                else
+                {
+                    <h2>Retira en:</h2>
+                    <div class="card rounded-3">
+                        <div class="card-body">
+
+                            <h2>Restaurante Nabi San Pedro</h2>
+                        </div>
+                    </div>
+                }
                 <h2 style="margin-top:30px;">Resumen de compra:</h2>
                 <div class="card rounded-3">
                     <div class="card-body">
@@ -34,10 +47,18 @@
 
                         }
                         <hr />
-                        <h3>Total a pagar + IVA: ₡@ViewBag.Usuario.PagoTotal</h3>
+                        @if (ViewBag.Envio == true)
+                        {
+                            <h3>Total a pagar + IVA: ₡@ViewBag.Usuario.PagoTotal</h3>
+      }
+      else
+      {
+                    <h3>Total a pagar + IVA: ₡@ViewBag.Total</h3>
+      }
 
                     </div>
                 </div>
+
             </div>
             <div class="col">
                 @using (Html.BeginForm("VentanaPago", "Pizza", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -45,7 +66,7 @@
                     @Html.AntiForgeryToken()
                     <div class="col">
                         <h2>Información de pago</h2>
-                        
+
                         <div class="card rounded-3">
                             <div class="row">
                                 <div class="col-7"></div>
@@ -92,23 +113,46 @@
                                                 <option value="2025">2025</option>
                                             </select>
                                         </div>
+                                        <div class="col-3" style="margin-top: 30px; margin-left: 20px; margin-right: 20px;margin-bottom:20px">
+                                            <label for="cvc" class="form-label">‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎ </label>
+                                            <input type="text" class="form-control" id="cvc" name="cvc" placeholder="CVC" maxlength="3" size="3" required autofocus />
+                                        </div>
+                                        @if (@ViewBag.Envio == false)
+                                        {
+
+
+                                            <div class="mb-3" style="display:none">
+                                                <input type="hidden" id="necesitaEnvio" name="necesitaEnvio" value="false">
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="mb-3" style="display:none">
+                                                <input type="hidden" id="necesitaEnvio" name="necesitaEnvio" value="true">
+                                            </div>
+                                        }
+
+                                        <div class="mb-3" style="display:none">
+                                            <input type="hidden" id="pagoTotal" name="pagoTotal" value="@ViewBag.Total">
+                                        </div>
                                     </div>
 
                                 </div>
-                                <div class="col-3" style="margin-top: 30px; margin-left: 20px; margin-right: 20px;margin-bottom:20px">
-                                    <label for="cvc" class="form-label">‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎ </label>
-                                    <input type="text" class="form-control" id="cvc" name="cvc" placeholder="CVC" maxlength="3" size="3" required autofocus />
-                                </div>
-                            </div>
-                        </div>
 
+                            </div>
+
+
+
+                        </div>
                     </div>
+
+
                     <input type="submit" id="boton-pagar" class="btn btn-principal btn-lg" value="Finalizar y pagar" style="margin-top:25px; float:right;" />
                 }
             </div>
 
         </div>
-       
+
     </div>
 </body>
 

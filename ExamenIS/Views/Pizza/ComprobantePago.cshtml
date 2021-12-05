@@ -8,32 +8,59 @@
         <hr />
         <div class="card" style="margin-top: 50px; margin-left: 200px; margin-right: 200px; text-align:center; align-content:center;">
             <div class="card-body">
+                @if (ViewBag.Envio == true)
+                {
+                    <div class="row">
+                        <div class="col">
+                            <h2>Nombre al que está la orden:</h2>
+                            <h3>@ViewBag.Usuario.Nombre</h3>
+                            <br />
+                            <hr />
+                            <br />
 
-                <div class="row">
-                    <div class="col">
-                        <h2>Nombre al que está la orden:</h2>
-                        <h3>@ViewBag.Usuario.Nombre</h3>
-                        <br />
-                        <hr />
-                        <br />
+                            <h2>Enviado a:</h2>
+                            <h3> @ViewBag.Usuario.Direccion</h3>
+                            <br />
+                            <hr />
+                            <br />
+                            <h2>Tiempo aproximado de espera: </h2>
+                            <h3>50 minutos</h3>
+                            <br />
+                            <hr />
+                            <br />
+                            <h2>Total a pagar:</h2>
+                            <h3> ₡@ViewBag.Usuario.PagoTotal</h3>
+                        </div>
 
-                        <h2>Enviado a:</h2>
-                        <h3> @ViewBag.Usuario.Direccion</h3>
-                        <br />
-                        <hr />
-                        <br />
-                        <h2>Tiempo aproximado de espera: </h2>
-                        <h3>50 minutos</h3>
-                        <br />
-                        <hr />
-                        <br />
-                        <h2>Total a pagar:</h2>
-                        <h3> ₡@ViewBag.Usuario.PagoTotal</h3>
                     </div>
-                    
-                </div>
 
-                       
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col">
+                            <h2>Nombre al que está la orden:</h2>
+                            <h3>@ViewBag.Nombre</h3>
+                            <br />
+                            <hr />
+                            <br />
+
+                            <h2>Retira en:</h2>
+                            <h3>Pizzeria Nabi San Pedro</h3>
+                            <br />
+                            <hr />
+                            <br />
+                            <h2>Tiempo aproximado de espera: </h2>
+                            <h3>50 minutos</h3>
+                            <br />
+                            <hr />
+                            <br />
+                            <h2>Total a pagar:</h2>
+                            <h3> ₡@ViewBag.Pago</h3>
+                        </div>
+
+                    </div>
+                }
 
             </div>
         </div>
