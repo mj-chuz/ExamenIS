@@ -111,12 +111,15 @@ namespace ExamenIS.Controllers
     [HttpPost]
     public ActionResult VentanaPago()
     {
+      UsuarioModel us = (UsuarioModel)TempData["orden"];
+      TempData["orden"] = us;
       return RedirectToAction("ComprobantePago", "Pizza");
-      return View();
     }
 
     public ActionResult ComprobantePago()
     {
+      UsuarioModel us = (UsuarioModel)TempData["orden"];
+      ViewBag.Usuario = us;
       return View();
     }
 
