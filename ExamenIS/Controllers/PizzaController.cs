@@ -60,5 +60,36 @@ namespace ExamenIS.Controllers
       ViewBag.articulos = accesoArticulos.ObtenerArticulos();
       return View();
     }
+
+    public ActionResult PedirServicioDomicilio(List<String> pizzas = null)
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult PedirServicioDomicilio(UsuarioModel usuario)
+    {
+      ViewBag.ExitoAlCrear = false;
+      try
+      {
+        if (ModelState.IsValid)
+        {
+          ViewBag.ExitoAlCrear = true;
+          if (ViewBag.ExitoAlCrear)
+          {
+            ViewBag.Message = ":D";
+            ModelState.Clear();
+          }
+        }
+        return View();
+      }
+      catch
+      {
+        ViewBag.Message = ":(";
+
+        return View(); //si falla se regresa a la vista original pero sin el mensaje
+      }
+    }
+
   }
 }
