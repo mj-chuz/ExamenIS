@@ -6,7 +6,7 @@
 <body>
     <div class="container-fluid contenedor-menu">
         <div class="row">
-            <div class="col-9">
+            <div class="col-8">
                 <h1>Menú</h1>
                 <hr />
                 @for (int numeroArticulos = 0; numeroArticulos < @ViewBag.articulos.Count; numeroArticulos++)
@@ -37,11 +37,53 @@
                 <div class="card orden">
                     <div class="card-body">
                         <h3>Mis Productos</h3>
+                        <hr />
+
+
+
                         <ul id="listaArticulos">
                         </ul>
-                        <hr/>
+                        <hr />
                         <h2 id="total-pagar"></h2>
-                        <button type="button" class="btn btn-principal btn-lg">Pagar</button>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-principal btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Pagar
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog-centered  modal-lg">
+                                <div class="modal-content">
+                                   
+                                        
+                                    
+                                    <div class="modal-body">
+                                        <h5 class="modal-title">¿Cómo prefiere su orden?</h5>
+                                       
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <img src="~/Imagenes/delivery-man.png" width="300" height="300">
+                                                        <button class="btn btn-servicio btn-lg">Entrega a domicilio</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <img src="~/Imagenes/pizza-shop.png" width="300" height="300">
+                                                        <button class="btn btn-servicio btn-lg">Recoger en restaurante</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

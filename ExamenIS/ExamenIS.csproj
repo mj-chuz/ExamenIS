@@ -156,8 +156,10 @@
     <Content Include="Imagenes\combo1.jpg" />
     <Content Include="Imagenes\combo2.jpg" />
     <Content Include="Imagenes\crearPizza.png" />
+    <Content Include="Imagenes\delivery-man.png" />
     <Content Include="Imagenes\horno.png" />
     <Content Include="Imagenes\ImagenPrincipal.png" />
+    <Content Include="Imagenes\pizza-shop.png" />
     <Content Include="Imagenes\pizza1.jpg" />
     <Content Include="Imagenes\pizza2.jpg" />
     <Content Include="Imagenes\pizzaCombo1.jpg" />
