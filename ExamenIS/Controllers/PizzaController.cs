@@ -60,5 +60,93 @@ namespace ExamenIS.Controllers
       ViewBag.articulos = accesoArticulos.ObtenerArticulos();
       return View();
     }
+
+    [HttpGet]
+    public ActionResult ElegirServicio(String a, String precioTotal)
+    {
+      ViewBag.Productos = a;
+      ViewBag.Precio = precioTotal; 
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Recibir()
+    {
+      String a = Request.Form["productosComprador"];
+      String precioTotal = Request.Form["subtotalPrecio"];
+      return RedirectToAction("ElegirServicio", "Pizza", new {a = a, precioTotal = precioTotal});    
+    }
+
+    public ActionResult PedirServicioDomicilio(String a, String precioTotal)
+    {
+      ViewBag.Subtotal = Convert.ToInt32(precioTotal);
+
+      ViewBag.Orden = a;
+
+      return View();
+    }
+
+
+    public ActionResult VentanaPago(String productos, bool necesitaEnvio = false)
+    {
+      UsuarioModel us = (UsuarioModel)TempData["orden"];
+      List<String> productosOrdenados = new List<String>();
+      String[] listaIngredientes = productos.Split(new[] { "," }, StringSplitOptions.None);
+      foreach (String articulo in listaIngredientes)
+      {
+        if (articulo != "")
+        {
+          productosOrdenados.Add(articulo);
+        }
+
+      }
+      us.PagoTotal = (int)(us.PagoTotal * 1.13);
+      ViewBag.Productos = productosOrdenados;
+      ViewBag.Usuario = us;
+      ViewBag.Envio = necesitaEnvio;
+      TempData["orden"] = us;
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult VentanaPago()
+    {
+      UsuarioModel us = (UsuarioModel)TempData["orden"];
+      TempData["orden"] = us;
+      return RedirectToAction("ComprobantePago", "Pizza");
+    }
+
+    public ActionResult ComprobantePago()
+    {
+      UsuarioModel us = (UsuarioModel)TempData["orden"];
+      ViewBag.Usuario = us;
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult PedirServicioDomicilio(UsuarioModel usuario)
+    {
+      ViewBag.ExitoAlCrear = false;
+      try
+      {
+        if (ModelState.IsValid)
+        {
+          ViewBag.ExitoAlCrear = true;
+          if (ViewBag.ExitoAlCrear)
+          {
+            ViewBag.Message = ":)";
+          }
+        }
+        TempData["orden"] = usuario;
+        return RedirectToAction("VentanaPago", "Pizza", new { productos = usuario.Productos, necesitaEnvio = true });
+      }
+      catch
+      {
+        ViewBag.Message = ":(";
+
+        return View(); //si falla se regresa a la vista original pero sin el mensaje
+      }
+    }
+
   }
 }

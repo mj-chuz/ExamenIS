@@ -69,10 +69,23 @@
     font-weight:bold;
 }
 
-.pregunta-derecha{
-    margin-right:100px;
-    margin-left:100px;
+
+
+.form-control {
+    background-color: #FFEBD8;
+    font-weight: bold;
 }
+
+    .form-control[readonly] {
+        background-color: #FFEBD8;
+    }
+
+.pregunta-derecha {
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+
 
 .pregunta-izquierda {
     margin-left: 100px;
@@ -155,4 +168,12 @@ input[type="checkbox"]:checked{
     background-color: #FFEBD8;
     color: black;
     font-weight: bold;
+}
+
+.card-servicios{
+    margin-top: 50px;
+}
+
+.contenedor-ventanaPago h1, h2 {
+    font-family: 'Segoe Print';
 }

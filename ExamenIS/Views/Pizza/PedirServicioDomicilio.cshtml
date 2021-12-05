@@ -1,0 +1,102 @@
+﻿@model ExamenIS.Models.UsuarioModel
+@{
+    ViewBag.Title = "ServicioExpress";
+    List<SelectListItem> distritos = new List<SelectListItem>(){
+       new SelectListItem { Text = "San Pedro" }, new SelectListItem { Text = "Sabanilla"},
+      new SelectListItem { Text = "San Rafael" }, new SelectListItem { Text = "Mercedes" }};
+}
+
+<body>
+    @if (ViewBag.Message != null)
+    {
+        if (ViewBag.ExitoAlCrear)
+        {
+            <div class="alert-success">
+                <h3> @ViewBag.Message </h3>
+            </div>
+        }
+        else
+        {
+            <div class="alert-danger">
+                <h3> @ViewBag.Message</h3>
+            </div>
+        }
+    }
+    <div class="container">
+        @using (Html.BeginForm("PedirServicioDomicilio", "Pizza", FormMethod.Post,
+        new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <h1>Entrega a domicilio</h1>
+                <h8>* Son campos obligatorios</h8>
+                <hr />
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group pregunta-izquierda">
+                            @Html.LabelFor(model => model.Identificacion)
+                            @Html.TextBoxFor(model => model.Identificacion, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Identificacion, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group pregunta-izquierda">
+                            @Html.LabelFor(model => model.Provincia)
+                            @Html.TextBoxFor(model => model.Provincia, new { @class = "form-control", @readonly = "readonly", @Value = "San José" })
+                            @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group pregunta-izquierda">
+                            @Html.LabelFor(model => model.Canton)
+                            @Html.TextBoxFor(model => model.Canton, "Montes de Oca", new { @class = "form-control", @readonly = "readonly", @Value = "Montes de Oca" })
+                            @Html.ValidationMessageFor(model => model.Canton, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group pregunta-izquierda">
+                            @Html.LabelFor(model => model.Distrito)
+                            @Html.DropDownListFor(model => model.Distrito, distritos, "---", new { @class = "form-select" })
+                            @Html.ValidationMessageFor(model => model.Distrito, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="form-group pregunta-derecha">
+                            @Html.LabelFor(model => model.Nombre)
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group pregunta-derecha">
+
+                            @Html.LabelFor(model => model.Telefono)
+                            @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group pregunta-derecha">
+                            @Html.LabelFor(model => model.Direccion)
+                            @Html.TextAreaFor(model => model.Direccion, new { @class = "form-control ", @rows = "3" })
+                            @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group" hidden>
+                            @Html.LabelFor(model => model.PagoTotal)
+                            @Html.TextBoxFor(model => model.PagoTotal, new { @Value = ViewBag.Subtotal })
+                            @Html.ValidationMessageFor(model => model.PagoTotal, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group" hidden>
+                            @Html.LabelFor(model => model.Productos)
+                            @Html.TextBoxFor(model => model.Productos, new { @Value = ViewBag.Orden })
+                            @Html.ValidationMessageFor(model => model.Productos, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <input type="submit" class="btn btn-principal btn-lg" style="float: right; margin-right: 200px;" value="Guardar" />
+
+
+
+            </div>
+        }
+    </div>
+
+</body>
+

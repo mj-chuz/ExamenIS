@@ -1,5 +1,5 @@
 ﻿var precioTotal = 0;
-var productosComprados = [];
+var productosComprados = "";
 var contador = 0;
 function agregarArticulo(nombre, precio) {
     var nuevoProducto = document.createElement("li");
@@ -16,7 +16,7 @@ function agregarArticulo(nombre, precio) {
     nuevoProducto.appendChild(botonEliminar);
     document.getElementById("listaArticulos").appendChild(nuevoProducto);
     
-    obtenerArticulos(nombre);
+    obtenerArticulos(nombre, precio);
     calcularTotal(precio);
     document.getElementById("botonEliminar" + contador).addEventListener("click", eliminarArticulo("nombre" + contador));
    
@@ -33,9 +33,18 @@ function calcularTotal(precio) {
     document.getElementById("total-pagar").innerHTML = "Subtotal: " + precioTotal;
 }
 
-function obtenerArticulos(nombre) {
-    productosComprados.push(nombre);
+function obtenerArticulos(nombre, precio) {
+    productosComprados = nombre + " ₡" + precio + "," + productosComprados;
     console.log(productosComprados);
     return productosComprados;
 }
 
+function articulos() {
+    return productosComprados;
+}
+
+function obtenerProductos() {
+    document.getElementById("productosComprador").value = productosComprados;
+    document.getElementById("subtotalPrecio").value = precioTotal;
+    console.log(document.getElementById("productosComprador").value);
+}
