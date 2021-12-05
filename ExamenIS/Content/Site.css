@@ -169,3 +169,7 @@ input[type="checkbox"]:checked{
     color: black;
     font-weight: bold;
 }
+
+.card-servicios{
+    margin-top: 50px;
+}

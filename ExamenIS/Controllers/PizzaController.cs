@@ -62,8 +62,10 @@ namespace ExamenIS.Controllers
     }
 
     [HttpGet]
-    public ActionResult ElegirServicio(String a)
+    public ActionResult ElegirServicio(String a, String precioTotal)
     {
+      ViewBag.Productos = a;
+      ViewBag.Precio = precioTotal; 
       return View();
     }
 
@@ -71,12 +73,19 @@ namespace ExamenIS.Controllers
     public ActionResult Recibir()
     {
       String a = Request.Form["productosComprador"];
-      return RedirectToAction("ElegirServicio", "Pizza", new {a = a});    
+      String precioTotal = Request.Form["subtotalPrecio"];
+      return RedirectToAction("ElegirServicio", "Pizza", new {a = a, precioTotal = precioTotal});    
     }
 
-    public ActionResult PedirServicioDomicilio()
+    public ActionResult PedirServicioDomicilio(String a, String precioTotal)
     {
-      String a = Request.Form["productosComprador"];
+      
+      return View();
+    }
+
+
+    public ActionResult VentanaPago()
+    {
       return View();
     }
 

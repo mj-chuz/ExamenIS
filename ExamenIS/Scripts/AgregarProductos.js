@@ -45,5 +45,6 @@ function articulos() {
 
 function obtenerProductos() {
     document.getElementById("productosComprador").value = productosComprados;
+    document.getElementById("subtotalPrecio").value = precioTotal;
     console.log(document.getElementById("productosComprador").value);
 }
