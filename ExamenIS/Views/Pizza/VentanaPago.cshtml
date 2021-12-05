@@ -1,0 +1,114 @@
+﻿<body>
+
+    <div class="container contenedor-ventanaPago">
+        <h1 style="margin-top:35px">Ventana de pago</h1>
+        <hr />
+        <div class="row">
+            <div class="col" style="margin-right:100px">
+               
+                    <h2>Direccion de entrega</h2>
+                    <div class="card rounded-3">
+                        <div class="card-body">
+
+                            <h4>@ViewBag.Usuario.Direccion</h4>
+                        </div>
+                    </div>
+              
+
+                    <h2 style="margin-top:30px;">Nombre al que está la orden</h2>
+                    <div class="card rounded-3">
+                        <div class="card-body">
+
+                            <h4>@ViewBag.Usuario.Nombre</h4>
+                        </div>
+                    </div>
+
+                <h2 style="margin-top:30px;">Resumen de compra:</h2>
+                <div class="card rounded-3">
+                    <div class="card-body">
+                        @for (int numeroArticulos = 0; numeroArticulos < @ViewBag.Productos.Count; numeroArticulos++)
+                        {
+
+                            <h4>@ViewBag.Productos[numeroArticulos]</h4>
+
+
+                        }
+                        <hr />
+                        <h3>Total a pagar + IVA: ₡@ViewBag.Usuario.PagoTotal</h3>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                @using (Html.BeginForm("VentanaPago", "Pizza", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="col">
+                        <h2>Información de pago</h2>
+                        
+                        <div class="card rounded-3">
+                            <div class="row">
+                                <div class="col-7"></div>
+                                <div class="col" style="margin-top:15px;">
+                                    <div class="row"><img src="~/imagenes/tarjeta.png" style="width:100%"></div>
+                                </div>
+                            </div>
+
+                            <div class="col" style="margin-left:20px;margin-right:20px;margin-top:20px">
+                                <label class="numeroTarjeta" for="numero-tarjeta">Número de Tarjeta</label>
+                                <input type="text" class="form-control" id="numeroTarjeta" name="numeroTarjeta" placeholder="0000-0000-0000-0000" maxlength="16" required autofocus inputmode="numeric" pattern="[0-9]{16,16}">
+                            </div>
+                            <div class="col" style="margin-top: 30px; margin-left: 20px; margin-right: 20px; ">
+                                <label for="nombre-en-tarjeta" class="form-label"> Nombre en la tarjeta </label>
+                                <input type="text" id="nombreTarjeta" class="form-control" name="nombreTarjeta" placeholder="Pedro Vargas" required autofocus />
+                            </div>
+                            <div class="row">
+                                <div class="col" style="margin-top: 30px; margin-left: 20px; margin-right: 0px; margin-bottom: 20px ">
+                                    <div class="row">
+                                        <label for="mes-expiracion" class="form-label"> Expiración </label>
+                                        <div class="col">
+                                            <select id="mes-expiracion" class="form-select" required>
+                                                <option id="opcion-base-mes" value="" default="default" selected="selected">Mes</option>
+                                                <option value="1">01</option>
+                                                <option value="2">02</option>
+                                                <option value="3">03</option>
+                                                <option value="4">04</option>
+                                                <option value="5">05</option>
+                                                <option value="6">06</option>
+                                                <option value="7">07</option>
+                                                <option value="8">08</option>
+                                                <option value="9">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select id="anho-expiracion" class="form-select" required>
+                                                <option id="opcion-base-anho" value="" default="default" selected="selected">Año</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2024">2024</option>
+                                                <option value="2025">2025</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-3" style="margin-top: 30px; margin-left: 20px; margin-right: 20px;margin-bottom:20px">
+                                    <label for="cvc" class="form-label">‎‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎ </label>
+                                    <input type="text" class="form-control" id="cvc" name="cvc" placeholder="CVC" maxlength="3" size="3" required autofocus />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <input type="submit" id="boton-pagar" class="btn btn-principal btn-lg" value="Finalizar y pagar" style="margin-top:25px; float:right;" />
+                }
+            </div>
+
+        </div>
+       
+    </div>
+</body>
+

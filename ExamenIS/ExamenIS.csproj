@@ -169,6 +169,7 @@
     <Content Include="Imagenes\pizzaMargarita.jpg" />
     <Content Include="Imagenes\pizzaPepperoni.jpg" />
     <Content Include="Imagenes\queso.jpg" />
+    <Content Include="Imagenes\tarjeta.png" />
     <Content Include="Imagenes\tomate.jpg" />
     <Content Include="Scripts\AgregarProductos.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -201,6 +202,8 @@
     <Content Include="Views\Pizza\ObtenerMenu.cshtml" />
     <Content Include="Views\Pizza\PedirServicioDomicilio.cshtml" />
     <Content Include="Views\Pizza\ElegirServicio.cshtml" />
+    <Content Include="Views\Pizza\VentanaPago.cshtml" />
+    <Content Include="Views\Pizza\ComprobantePago.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

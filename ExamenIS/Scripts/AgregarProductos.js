@@ -16,7 +16,7 @@ function agregarArticulo(nombre, precio) {
     nuevoProducto.appendChild(botonEliminar);
     document.getElementById("listaArticulos").appendChild(nuevoProducto);
     
-    obtenerArticulos(nombre);
+    obtenerArticulos(nombre, precio);
     calcularTotal(precio);
     document.getElementById("botonEliminar" + contador).addEventListener("click", eliminarArticulo("nombre" + contador));
    
@@ -33,8 +33,8 @@ function calcularTotal(precio) {
     document.getElementById("total-pagar").innerHTML = "Subtotal: " + precioTotal;
 }
 
-function obtenerArticulos(nombre) {
-    productosComprados = nombre + "," + productosComprados;
+function obtenerArticulos(nombre, precio) {
+    productosComprados = nombre + " ₡" + precio + "," + productosComprados;
     console.log(productosComprados);
     return productosComprados;
 }

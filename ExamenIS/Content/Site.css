@@ -173,3 +173,7 @@ input[type="checkbox"]:checked{
 .card-servicios{
     margin-top: 50px;
 }
+
+.contenedor-ventanaPago h1, h2 {
+    font-family: 'Segoe Print';
+}

@@ -79,12 +79,43 @@ namespace ExamenIS.Controllers
 
     public ActionResult PedirServicioDomicilio(String a, String precioTotal)
     {
-      
+      ViewBag.Subtotal = Convert.ToInt32(precioTotal);
+
+      ViewBag.Orden = a;
+
       return View();
     }
 
 
+    public ActionResult VentanaPago(String productos, bool necesitaEnvio = false)
+    {
+      UsuarioModel us = (UsuarioModel)TempData["orden"];
+      List<String> productosOrdenados = new List<String>();
+      String[] listaIngredientes = productos.Split(new[] { "," }, StringSplitOptions.None);
+      foreach (String articulo in listaIngredientes)
+      {
+        if (articulo != "")
+        {
+          productosOrdenados.Add(articulo);
+        }
+
+      }
+      us.PagoTotal = (int)(us.PagoTotal * 1.13);
+      ViewBag.Productos = productosOrdenados;
+      ViewBag.Usuario = us;
+      ViewBag.Envio = necesitaEnvio;
+      TempData["orden"] = us;
+      return View();
+    }
+
+    [HttpPost]
     public ActionResult VentanaPago()
+    {
+      return RedirectToAction("ComprobantePago", "Pizza");
+      return View();
+    }
+
+    public ActionResult ComprobantePago()
     {
       return View();
     }
@@ -100,11 +131,11 @@ namespace ExamenIS.Controllers
           ViewBag.ExitoAlCrear = true;
           if (ViewBag.ExitoAlCrear)
           {
-            ViewBag.Message = ":D";
-            ModelState.Clear();
+            ViewBag.Message = ":)";
           }
         }
-        return View();
+        TempData["orden"] = usuario;
+        return RedirectToAction("VentanaPago", "Pizza", new { productos = usuario.Productos, necesitaEnvio = true });
       }
       catch
       {

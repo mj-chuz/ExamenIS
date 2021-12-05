@@ -14,5 +14,7 @@ namespace ExamenIS.Models
     public String Provincia { get; set; }
     public String Canton { get; set; }
     public String Distrito { get; set; }
+    public int PagoTotal { get; set; }
+    public String Productos { get; set; }
   }
 }
