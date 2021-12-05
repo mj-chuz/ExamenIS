@@ -20,6 +20,7 @@ namespace ExamenIS.Controllers
     public ActionResult CrearPizza(PizzaModel pizzaCreada)
     {
       String pizza = "ingrediente";
+      int contadorIngredientes = 0;
       List<String> ingredientes = new List<String>();
       String ingredienteAgregado = "";
       for (int ingrediente = 1; ingrediente < 10; ingrediente++)
@@ -28,10 +29,23 @@ namespace ExamenIS.Controllers
         if (ingredienteAgregado != null)
         {
           ingredientes.Add(ingredienteAgregado);
+          contadorIngredientes++;
         }
 
       }
       pizzaCreada.Ingredientes = ingredientes;
+      if(pizzaCreada.Tamano == "Grande")
+      {
+        pizzaCreada.Precio += 2000;
+        
+      }
+      pizzaCreada.Precio += contadorIngredientes * 1000;
+
+      if(pizzaCreada.CantidadQueso == "Extra")
+      {
+        pizzaCreada.Precio += 1000;
+      }
+
       ViewBag.ExitoAlCrear = false;
       try
       {
@@ -44,7 +58,7 @@ namespace ExamenIS.Controllers
             ModelState.Clear();
           }
         }
-        return View();
+        return RedirectToAction("ObtenerMenu", "Pizza", new { nombrePizza = pizzaCreada.Nombre, precio = pizzaCreada.Precio });
       }
       catch
       {
@@ -54,8 +68,10 @@ namespace ExamenIS.Controllers
       }
     }
 
-    public ActionResult ObtenerMenu()
+    public ActionResult ObtenerMenu(String nombrePizza = "", int precio = 0)
     {
+      ViewBag.PizzaPersonalizada = nombrePizza;
+      ViewBag.PrecioPersonalizado = precio;
       PizzaHandler accesoArticulos = new PizzaHandler();
       ViewBag.articulos = accesoArticulos.ObtenerArticulos();
       return View();

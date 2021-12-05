@@ -7,10 +7,10 @@
         new SelectListItem { Text = "Salsa de tomate"}, new SelectListItem { Text = "Salsa barbacoa" },
       new SelectListItem { Text = "Salsa carbonara" }, new SelectListItem { Text = "Crema fresca" }  };
   List<SelectListItem> tiposTamano = new List<SelectListItem>(){
-        new SelectListItem { Text = "Mediana"}, new SelectListItem { Text = "Grande" }};
+        new SelectListItem { Text = "Mediana ₡5500"}, new SelectListItem { Text = "Grande ₡7000" }};
   List<SelectListItem> cantidadQueso = new List<SelectListItem>(){
        new SelectListItem { Text = "Sin queso" }, new SelectListItem { Text = "Regular"}, 
-      new SelectListItem { Text = "Extra" }};
+      new SelectListItem { Text = "Extra +₡1000" }};
 }
 
 <body>
@@ -79,13 +79,14 @@
 
                 <div class="form-group" hidden>
                     @Html.LabelFor(model => model.Precio)
-                    @Html.TextBoxFor(model => model.Precio, new { @Value = 50000 })
+                    @Html.TextBoxFor(model => model.Precio, new { @Value = 5500 })
                     @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
                 </div>
             </div>
             
             <div class="ingredientes">
                 <h2>Elije los ingredientes</h2>
+                <h4>Se carga ₡1000 por cada ingrediente agregado</h4>
                 <div class="row">
                     <div class="col">
                         <div class="form-check">
