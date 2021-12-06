@@ -1,7 +1,7 @@
 ﻿var precioTotal = 0;
 var productosComprados = "";
 var contador = 0;
-
+var primeraVez = true;
 
 function agregarArticulo(nombre, precio) {
     var nuevoProducto = document.createElement("li");
@@ -11,9 +11,17 @@ function agregarArticulo(nombre, precio) {
     nuevoProducto.appendChild(nombreArticulo);
     document.getElementById("listaArticulos").appendChild(nuevoProducto);
     obtenerArticulos(nombre, precio);
-    calcularTotal(precio);
+    
     contador = parseFloat(contador) + parseFloat(1);
-;
+    if (document.getElementById("pizza-personalizada") != null && primeraVez === true) {
+        var pizzaPersonalizada = document.getElementById("pizza-personalizada").textContent;
+        var precioPizza = pizzaPersonalizada.split('₡');
+        precioTotal = parseFloat(precioTotal) + parseFloat(precioPizza[1]);
+        primeraVez = false;
+        console.log(pizzaPersonalizada);
+        console.log(precioPizza);
+    }
+    calcularTotal(precio);
 }
 
 
@@ -30,15 +38,12 @@ function obtenerArticulos(nombre, precio) {
 }
 
 function obtenerProductos() {
-    if (document.getElementById("pizza-personalizada").textContent != null) {
+    if (document.getElementById("pizza-personalizada") != null) {
         var pizzaPersonalizada = document.getElementById("pizza-personalizada").textContent;
-        productosComprados = pizzaPersonalizada;
-        var precioPizza = pizzaPersonalizada.split('₡');
-        precioTotal = parseFloat(precioTotal) + parseFloat(precioPizza[1]);
-
+        productosComprados = productosComprados +","+ pizzaPersonalizada;
     }
     
-    document.getElementById("productosComprador").value = productosComprados;
+    document.getElementById("productosComprados").value = productosComprados;
     document.getElementById("subtotalPrecio").value = precioTotal;
-    console.log(document.getElementById("productosComprador").value);
+    console.log(document.getElementById("productosComprados").value);
 }

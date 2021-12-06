@@ -23,7 +23,7 @@
         }
     }
     <div class="container">
-        @using (Html.BeginForm("PedirServicioDomicilio", "Pizza", FormMethod.Post,
+        @using (Html.BeginForm("PedirServicioDomicilio", "Servicios", FormMethod.Post,
         new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
@@ -85,12 +85,12 @@
                             @Html.TextBoxFor(model => model.Productos, new { @Value = ViewBag.Orden })
                             @Html.ValidationMessageFor(model => model.Productos, "", new { @class = "text-danger" })
                         </div>
-
+                        <input type="submit" class="btn btn-principal btn-lg" style="float: right; margin-right: 200px; margin-top:30px;" value="Guardar" />
                     </div>
 
                 </div>
 
-                <input type="submit" class="btn btn-principal btn-lg" style="float: right; margin-right: 200px;" value="Guardar" />
+                
 
 
 

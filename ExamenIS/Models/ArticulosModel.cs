@@ -12,8 +12,5 @@ namespace ExamenIS.Models
     public int Precio { get; set; }
     public String Descripcion { get; set; }
     public String NombreImagen { get; set; }
-    
-
-
   }
 }

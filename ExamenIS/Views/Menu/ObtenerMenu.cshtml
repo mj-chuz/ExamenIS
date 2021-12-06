@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "ObtenerMenu";
+}
+
+<body>
+    <div class="container-fluid contenedor-menu">
+        <div class="row">
+            <div class="col-8">
+                <h1>Menú</h1>
+                <hr />
+                @for (int numeroArticulos = 0; numeroArticulos < @ViewBag.articulos.Count; numeroArticulos++)
+                {
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="~/Imagenes/@ViewBag.articulos[numeroArticulos].NombreImagen" width="400" height="250">
+                                </div>
+                                <div class="col">
+                                    <h1>@ViewBag.articulos[numeroArticulos].Nombre</h1>
+                                    <h3>Precio: ₡@ViewBag.articulos[numeroArticulos].Precio</h3>
+                                    <br />
+                                    <h5>@ViewBag.articulos[numeroArticulos].Descripcion</h5>
+                                    <br />
+                                    <button type="button" class="btn btn-principal btn-lg" onclick="agregarArticulo('@ViewBag.articulos[numeroArticulos].Nombre', '@ViewBag.articulos[numeroArticulos].Precio')">Agregar a la orden</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                <a style="float:left; margin-top:15px" href="#top">Volver arriba</a>
+            </div>
+            <div class="col">
+                <div class="card orden">
+                    <div class="card-body">
+                        <h3>Mis Productos</h3>
+                        <hr />
+                        <ul id="listaArticulos">
+                            @if (ViewBag.PizzaPersonalizada != "")
+                            {
+                                <li id="pizza-personalizada" style="margin-bottom:30px;">
+                                    @ViewBag.PizzaPersonalizada ₡@ViewBag.PrecioPersonalizado
+                                </li>
+                            }
+
+                        </ul>
+                        <hr />
+                        <h2 id="total-pagar"></h2>
+
+                        @using (Html.BeginForm("Recibir", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div style="display:none">
+                                <input type="hidden" id="productosComprados" name="productosComprados" value="">
+                            </div>
+
+                            <div style="display:none">
+                                <input type="hidden" id="subtotalPrecio" name="subtotalPrecio" value="">
+                            </div>
+
+                            <input type="submit" class="btn btn-principal btn-lg" value="Pagar" onclick="obtenerProductos();">
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="~/Scripts/AgregarProductos.js"></script>
