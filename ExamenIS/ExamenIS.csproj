@@ -121,11 +121,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\PagoController.cs" />
     <Compile Include="Controllers\PizzaController.cs" />
+    <Compile Include="Controllers\ServiciosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Handlers\PizzaHandler.cs" />
+    <Compile Include="Handlers\ArticulosHandler.cs" />
     <Compile Include="Models\ArticulosModel.cs" />
     <Compile Include="Models\PizzaModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
@@ -199,11 +202,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Pizza\CrearPizza.cshtml" />
-    <Content Include="Views\Pizza\ObtenerMenu.cshtml" />
-    <Content Include="Views\Pizza\PedirServicioDomicilio.cshtml" />
-    <Content Include="Views\Pizza\ElegirServicio.cshtml" />
-    <Content Include="Views\Pizza\VentanaPago.cshtml" />
-    <Content Include="Views\Pizza\ComprobantePago.cshtml" />
+    <Content Include="Views\Menu\ObtenerMenu.cshtml" />
+    <Content Include="Views\Menu\ElegirServicio.cshtml" />
+    <Content Include="Views\Servicios\PedirServicioDomicilio.cshtml" />
+    <Content Include="Views\Pago\VentanaPago.cshtml" />
+    <Content Include="Views\Pago\ComprobantePago.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

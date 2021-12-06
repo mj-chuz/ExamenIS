@@ -38,22 +38,26 @@
                     <div class="card-body">
                         <h3>Mis Productos</h3>
                         <hr />
-
-
-
                         <ul id="listaArticulos">
+                            @if (ViewBag.PizzaPersonalizada != "")
+                            {
+                                <li id="pizza-personalizada" style="margin-bottom:30px;">
+                                    @ViewBag.PizzaPersonalizada ₡@ViewBag.PrecioPersonalizado
+                                </li>
+                            }
+
                         </ul>
                         <hr />
                         <h2 id="total-pagar"></h2>
 
-                        @using (Html.BeginForm("Recibir", "Pizza", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Recibir", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
-                            <div class="mb-3" style="display:none">
-                                <input type="hidden" id="productosComprador" name="productosComprador" value="">
+                            <div style="display:none">
+                                <input type="hidden" id="productosComprados" name="productosComprados" value="">
                             </div>
 
-                            <div class="mb-3" style="display:none">
+                            <div style="display:none">
                                 <input type="hidden" id="subtotalPrecio" name="subtotalPrecio" value="">
                             </div>
 
