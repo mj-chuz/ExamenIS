@@ -2,14 +2,14 @@
 @{
   ViewBag.Title = "CrearPizza";
   List<SelectListItem> tiposMasa = new List<SelectListItem>(){
-        new SelectListItem { Text = "Delgada"}, new SelectListItem { Text = "Gruesa" } };
+        new SelectListItem { Text = "Delgada", Value = "Delgada"}, new SelectListItem { Text = "Gruesa" } };
   List<SelectListItem> tiposSalsa = new List<SelectListItem>(){
-        new SelectListItem { Text = "Salsa de tomate"}, new SelectListItem { Text = "Salsa barbacoa" },
+        new SelectListItem { Text = "Salsa de tomate", Value = "Tomate"}, new SelectListItem { Text = "Salsa barbacoa" },
       new SelectListItem { Text = "Salsa carbonara" }, new SelectListItem { Text = "Crema fresca" }  };
   List<SelectListItem> tiposTamano = new List<SelectListItem>(){
         new SelectListItem { Text = "Mediana ₡5500"}, new SelectListItem { Text = "Grande ₡7000" }};
   List<SelectListItem> cantidadQueso = new List<SelectListItem>(){
-       new SelectListItem { Text = "Sin queso" }, new SelectListItem { Text = "Regular"}, 
+       new SelectListItem { Text = "Sin queso" }, new SelectListItem { Text = "Regular", Value = "Regular"}, 
       new SelectListItem { Text = "Extra +₡1000" }};
 }
 
